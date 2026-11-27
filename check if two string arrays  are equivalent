@@ -1,0 +1,43 @@
+
+class Main {
+    public static void main(String[] args) {
+
+        String word = "abcdefd";
+        char ch = 'd';
+
+        Solution s = new Solution();
+
+        String result = s.reversePrefix(word, ch);
+
+        System.out.println(result);
+    }
+}
+
+class Solution {
+    public String reversePrefix(String word, char ch) {
+
+        int index = word.indexOf(ch);
+
+        if (index == -1) {
+            return word;
+        }
+
+        StringBuilder str = new StringBuilder(word);
+
+        int left = 0;
+        int right = index;
+
+        while (left < right) {
+
+            char temp = str.charAt(left);
+
+            str.setCharAt(left, str.charAt(right));
+            str.setCharAt(right, temp);
+
+            left++;
+            right--;
+        }
+
+        return str.toString();
+    }
+}
